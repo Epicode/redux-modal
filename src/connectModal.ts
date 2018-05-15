@@ -60,6 +60,7 @@ export default function connectModal({
           if (destroyOnHide) {
             if (destroyTimeout) {
               this.setState({ show: false }, () => {
+                this.forceUpdate();
                 setTimeout(() => this.props.destroy(name), destroyTimeout);
               });
             }

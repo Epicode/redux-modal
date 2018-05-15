@@ -91,6 +91,7 @@ export default function connectModal(_a) {
           if (destroyOnHide) {
             if (destroyTimeout) {
               this.setState({ show: false }, function() {
+                _this.forceUpdate();
                 setTimeout(function() {
                   return _this.props.destroy(name);
                 }, destroyTimeout);
