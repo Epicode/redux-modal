@@ -101,7 +101,7 @@ export default function connectModal(_a) {
             this.hide();
           }
         }
-        if (!resolve) {
+        if (!resolve && !destroyTimeout) {
           this.show();
         }
         if (resolve) {

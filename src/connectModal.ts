@@ -69,7 +69,7 @@ export default function connectModal({
           }
         }
 
-        if (!resolve) {
+        if (!resolve && !destroyTimeout) {
           this.show();
         }
 
