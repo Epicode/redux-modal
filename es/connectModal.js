@@ -90,18 +90,17 @@ export default function connectModal(_a) {
         if (!modal.show) {
           if (destroyOnHide) {
             if (destroyTimeout) {
-              this.setState({ show: false }, function() {
-                _this.forceUpdate();
-                setTimeout(function() {
-                  return _this.props.destroy(name);
-                }, destroyTimeout);
-              });
+              this.hide();
+              setTimeout(function() {
+                return _this.props.destroy(name);
+              }, destroyTimeout);
+              return;
             }
           } else {
-            this.hide();
+            return this.hide();
           }
         }
-        if (!resolve && !destroyTimeout) {
+        if (!resolve) {
           this.show();
         }
         if (resolve) {
