@@ -90,10 +90,11 @@ export default function connectModal(_a) {
         if (!modal.show) {
           if (destroyOnHide) {
             if (destroyTimeout) {
-              this.hide();
-              setTimeout(function() {
-                return _this.props.destroy(name);
-              }, destroyTimeout);
+              this.setState({ show: false }, function() {
+                setTimeout(function() {
+                  return _this.props.destroy(name);
+                }, destroyTimeout);
+              });
             }
           } else {
             this.hide();

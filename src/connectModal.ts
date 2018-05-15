@@ -59,8 +59,9 @@ export default function connectModal({
         if (!modal.show) {
           if (destroyOnHide) {
             if (destroyTimeout) {
-              this.hide();
-              setTimeout(() => this.props.destroy(name), destroyTimeout);
+              this.setState({ show: false }, () => {
+                setTimeout(() => this.props.destroy(name), destroyTimeout);
+              });
             }
           } else {
             this.hide();
