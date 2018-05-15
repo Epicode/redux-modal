@@ -32,6 +32,7 @@ export interface ModalConfig {
   resolve?: (parameter: ResolveParamter) => any;
   getModalState?: (state: any) => ModalState;
   destroyOnHide?: boolean;
+  closeTimeout?: number;
 }
 
 export interface InjectedProps {

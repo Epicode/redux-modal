@@ -21,6 +21,7 @@ export default function connectModal({
   getModalState = state => state.modal,
   resolve,
   destroyOnHide = true,
+  closeTimeout,
 }: ModalConfig): InjectedWrapperComponent {
   return WrappedComponent => {
     class ConnectModal extends React.Component<
@@ -56,7 +57,14 @@ export default function connectModal({
         }
 
         if (!modal.show) {
-          return destroyOnHide ? this.props.destroy(name) : this.hide();
+          if (destroyOnHide) {
+            if (closeTimeout) {
+              this.hide();
+              setTimeout(() => this.props.destroy(name), closeTimeout);
+            }
+          } else {
+            this.hide();
+          }
         }
 
         if (!resolve) {
